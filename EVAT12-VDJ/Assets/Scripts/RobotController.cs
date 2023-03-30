@@ -17,6 +17,7 @@ public class RobotController : MonoBehaviour
     const int ANIMATION_MEELE = 3;
     const int ANIMATION_SHOOT = 4;
     const int ANIMATION_SLIDE = 5;
+    const int ANIMATION_DIE = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,21 @@ public class RobotController : MonoBehaviour
         rb.velocity = new Vector2(0, rb.velocity.y);
         ChangeAnimation(ANIMATION_IDDLE);
 
+        if (Input.GetKey(KeyCode.X))
+        {
+            ChangeAnimation(ANIMATION_DIE);
+        }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            ChangeAnimation(ANIMATION_SHOOT);
+        }
+
+        if (Input.GetKey(KeyCode.M))
+        {
+            ChangeAnimation(ANIMATION_MEELE);
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(velocity, rb.velocity.y);
@@ -44,6 +60,31 @@ public class RobotController : MonoBehaviour
             rb.velocity = new Vector2(-velocity, rb.velocity.y);
             sr.flipX = true;
             ChangeAnimation(ANIMATION_RUN);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.C))
+        {
+            rb.velocity = new Vector2(velocity, rb.velocity.y);
+            sr.flipX = false;
+            ChangeAnimation(ANIMATION_RUNSHOOT);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.C))
+        {
+            rb.velocity = new Vector2(-velocity, rb.velocity.y);
+            sr.flipX = true;
+            ChangeAnimation(ANIMATION_RUNSHOOT);
+        }
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.S))
+        {
+            rb.velocity = new Vector2(velocity, rb.velocity.y);
+            sr.flipX = false;
+            ChangeAnimation(ANIMATION_SLIDE);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.S))
+        {
+            rb.velocity = new Vector2(-velocity, rb.velocity.y);
+            sr.flipX = true;
+            ChangeAnimation(ANIMATION_SLIDE);
         }
     }
 
