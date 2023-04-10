@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NinjaFemController : MonoBehaviour
 {
-    public float velocity = 5;
+    public float velocity = 5, jumpForce = 3;
 
     Rigidbody2D rb; //gravedad inicial
     SpriteRenderer sr;
@@ -17,8 +17,11 @@ public class NinjaFemController : MonoBehaviour
     const int ANIMATION_SLIDE = 3;
     const int ANIMATION_DIE = 4;
     const int ANIMATION_ATTACK = 5;
+    const int ANIMATION_JUMP = 6;
 
     bool status = true;
+    bool saltos = true;
+    bool saltos2 = true;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +75,23 @@ public class NinjaFemController : MonoBehaviour
                 sr.flipX = true;
                 ChangeAnimation(ANIMATION_SLIDE);
             }
-            
+            //saltos
+            if (Input.GetKeyUp(KeyCode.Space) && saltos == true)
+            {
+                if (saltos2 == false) //segunda vez
+                {
+                    ChangeAnimation(ANIMATION_JUMP);
+                    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    saltos = false; //salta una vez
+                }
+                else
+                {
+                    ChangeAnimation(ANIMATION_JUMP);
+                    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                }
+                saltos2 = false;
+            }
+
         }
         if (Input.GetKey(KeyCode.X)){
             status = false;
@@ -81,6 +100,11 @@ public class NinjaFemController : MonoBehaviour
                 ChangeAnimation(ANIMATION_DIE);
             }
         }
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        saltos = true;
+        saltos2 = true;
     }
     private void ChangeAnimation(int animation)
     {
