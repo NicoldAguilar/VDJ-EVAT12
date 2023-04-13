@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hongo
+  - DarkHole
+  - Checkpoint1
+  - Checkpoint2
+  - Potenciador1
+  - Zombie
+  - Hero
   layers:
   - Default
   - TransparentFX
