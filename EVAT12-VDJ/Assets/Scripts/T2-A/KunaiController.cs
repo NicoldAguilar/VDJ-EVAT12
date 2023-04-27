@@ -7,7 +7,7 @@ public class KunaiController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
 
-    public GameObject bullet;
+    public GameObject bullet;    
 
     public float velocity = 5, realVelocity, realVelocityY, velocityX = 1, velocityY = 1;
 
@@ -59,6 +59,7 @@ public class KunaiController : MonoBehaviour
         {
             Destroy(other.gameObject); //Se destruye la bala 
             Destroy(this.gameObject);
+            gameManager.ZombieMuerto(1);
         }
     }
 

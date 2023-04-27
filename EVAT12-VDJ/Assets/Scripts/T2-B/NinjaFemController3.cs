@@ -156,6 +156,7 @@ public class NinjaFemController3 : MonoBehaviour
         if (other.gameObject.tag == "Zombie")
         {
             Destroy(other.gameObject);
+            gameManager.ZombieMuerto(1);
         }
 
         if (other.gameObject.tag == "Coin")

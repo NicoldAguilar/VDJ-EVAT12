@@ -34,16 +34,15 @@ public class ZombieController2 : MonoBehaviour
         ChangeAnimation(ANIMATION_IDDLE);
 
         if (vidas <= 0)
-        {
-            Destroy(this.gameObject);
+        {            
+            Destroy(this.gameObject);            
         }
 
         if(gameManager.lives == 0)
         {
             Debug.Log("Choco el zombie");
             ChangeAnimation(ANIMATION_DIE);
-            velocity = 0;
-            
+            velocity = 0;           
         }
     }
     public void quitarVidasZombie(int perder)

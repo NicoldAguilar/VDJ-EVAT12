@@ -9,18 +9,23 @@ public class GameManager : MonoBehaviour
     public Text livesText;
     public Text balasText;
     public Text coinsText;
+    public Text zombiesCantidadText;
 
     public int balas;
     public int lives;
     public int coins;
+    public int zombiesCant;
 
     public bool choque = false;
+
+    public GameObject zombie;
 
     void Start()
     {
         balas = 20;
         lives = 3;
         coins = 0;
+        zombiesCant = 0;
 
         PrintInScreenBullet();
         PrintLivesInScreen();
@@ -54,6 +59,22 @@ public class GameManager : MonoBehaviour
     {
         coins += moneditas;
         PrintCoinsT1InScreen();
+    }
+
+    public int CantidadZombies()
+    {
+        return zombiesCant;
+    }
+
+    public void ZombieMuerto(int zombietieso)
+    {
+        zombiesCant += zombietieso;
+        PrintZombieInScreen();
+    }
+
+    private void PrintZombieInScreen()
+    {
+        zombiesCantidadText.text = "Zombies Destruidos: " + zombiesCant;
     }
 
     private void PrintInScreenBullet()
