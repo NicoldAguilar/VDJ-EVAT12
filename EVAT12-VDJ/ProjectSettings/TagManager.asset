@@ -11,6 +11,8 @@ TagManager:
   - Potenciador1
   - Zombie
   - Hero
+  - Kunai
+  - Coin
   layers:
   - Default
   - TransparentFX
