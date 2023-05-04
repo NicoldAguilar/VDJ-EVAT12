@@ -22,6 +22,10 @@ public class PortalController : MonoBehaviour
         {
             return; //devuelve null
         }
+        if (gameManager.zombiesCant == 5)
+        {
+            return;
+        }
         cont += Time.deltaTime;
         if (cont >= 3) { CrearZombie(-1); cont = 0; }
     }

@@ -19,11 +19,11 @@ public class GameManager2 : MonoBehaviour
 
     public GameObject zombie;
 
-    //public const int SCENE_T1C = 6;
+    public const int SCENE_T2B = 1;
 
     void Start()
     {
-        balas = 5;
+        balas = 20;
         lives = 2;
         coins = 0;
         zombiesCant = 0;
@@ -81,7 +81,7 @@ public class GameManager2 : MonoBehaviour
 
     private void PrintZombieInScreen()
     {
-        zombiesCantidadText.text = "Zombies Destruidos: " + zombiesCant;
+        zombiesCantidadText.text = "Puntos: " + zombiesCant;
     }
 
     private void PrintInScreenBullet()

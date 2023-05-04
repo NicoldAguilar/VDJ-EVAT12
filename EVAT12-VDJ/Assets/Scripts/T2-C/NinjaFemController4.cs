@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NinjaFemController4 : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class NinjaFemController4 : MonoBehaviour
     bool enelaire = false;
     bool checkpointverif = true;
     bool cambio = false;
+    bool llave = false;
+    bool escena = false;
 
     Vector3 bulletPosition = new Vector3(0, 0, 0);
 
@@ -41,7 +44,7 @@ public class NinjaFemController4 : MonoBehaviour
     public AudioClip coinSound;
     public AudioClip bulletSound;
 
-    public Text texto;
+    public Text llaveTexto;
 
     public GameManager2 gameManager;
 
@@ -156,15 +159,36 @@ public class NinjaFemController4 : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        /*
-        if (other.gameObject.name == "Portal")
+        if (other.gameObject.name == "Llave")
         {
-            SceneManager.LoadScene(GameManagerT2D.SCENE_T1C);
-            gameManager.LoadGameT21();
+            Destroy(other.gameObject);
+            llave = true;
+            llaveTexto.text = "Tienes la llave";
+            audioSource.PlayOneShot(bulletSound);
+
         }
-        */
+
+        if (other.gameObject.tag == "cambioEscena")
+        {
+            escena = true;
+        }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        
+    }
+    public void CambiarScene()
+    {
+        if (escena == true && llave == true && gameManager.zombiesCant == 5)
+        {
+            SceneManager.LoadScene(GameManager2.SCENE_T2B);
+        }
+        else
+        {
+            Debug.Log("Aún no cumples los requisitos");
+        }
+    }
     public void AtacarKunai()
     {
         if (status == false) return;

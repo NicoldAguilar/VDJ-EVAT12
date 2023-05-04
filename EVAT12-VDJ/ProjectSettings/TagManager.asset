@@ -14,6 +14,8 @@ TagManager:
   - Kunai
   - Coin
   - MasBalas
+  - Llave
+  - cambioEscena
   layers:
   - Default
   - TransparentFX
