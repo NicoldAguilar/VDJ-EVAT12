@@ -39,6 +39,7 @@ public class NinjaFemController3 : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip dieSound;
     public AudioClip coinSound;
+    public AudioClip bulletSound;
 
     public Text texto;
 
@@ -52,7 +53,6 @@ public class NinjaFemController3 : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -163,6 +163,12 @@ public class NinjaFemController3 : MonoBehaviour
         {
             gameManager.GanaMonedasT1(1);
             audioSource.PlayOneShot(coinSound);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "MasBalas")
+        {
+            gameManager.GanaMasBalas(5);
+            audioSource.PlayOneShot(bulletSound);
             Destroy(other.gameObject);
         }
     }

@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        balas = 20;
-        lives = 3;
+        balas = 5;
+        lives = 2;
         coins = 0;
         zombiesCant = 0;
 
@@ -72,6 +72,12 @@ public class GameManager : MonoBehaviour
         PrintZombieInScreen();
     }
 
+    public void GanaMasBalas(int masBalas)
+    {
+        balas += masBalas;
+        PrintInScreenBullet();
+    }
+
     private void PrintZombieInScreen()
     {
         zombiesCantidadText.text = "Zombies Destruidos: " + zombiesCant;
@@ -79,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     private void PrintInScreenBullet()
     {
-        balasText.text = "Balas Restantes: " + balas + "/20";
+        balasText.text = "Balas Restantes: " + balas;
     }
 
     public void PrintLivesInScreen()

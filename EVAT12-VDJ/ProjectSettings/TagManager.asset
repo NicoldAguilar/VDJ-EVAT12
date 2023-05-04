@@ -13,6 +13,7 @@ TagManager:
   - Hero
   - Kunai
   - Coin
+  - MasBalas
   layers:
   - Default
   - TransparentFX

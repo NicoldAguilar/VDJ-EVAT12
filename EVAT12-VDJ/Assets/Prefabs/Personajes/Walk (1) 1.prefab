@@ -158,5 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: -1
-  vidas: 1
+  vidasZombie: 2
   gameManager: {fileID: 0}

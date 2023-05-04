@@ -139,3 +139,8 @@ MonoBehaviour:
   bullet: {fileID: 6796671781555243475}
   velocity: 5
   realVelocity: 0
+  realVelocityY: 0
+  velocityX: 1
+  velocityY: 1
+  gameManager: {fileID: 0}
+  zombieVidas: {fileID: 0}

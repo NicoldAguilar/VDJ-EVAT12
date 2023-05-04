@@ -39,8 +39,7 @@ public class KunaiController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        Destroy(this.gameObject, 5);
-        gameManager = FindObjectOfType<GameManager>(); //Para saber a que objeto se refiere (buscar e igualar)
+        Destroy(this.gameObject, 5);       
     }
 
     void Update()
@@ -53,16 +52,6 @@ public class KunaiController : MonoBehaviour
             gameManager.BalasRestantes(2);
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Zombie")
-        {
-            Destroy(other.gameObject); //Se destruye la bala 
-            Destroy(this.gameObject);
-            gameManager.ZombieMuerto(1);
-        }
-    }
-
     public void flip()
     {
         if (rb.velocity.x < 0)
@@ -90,8 +79,6 @@ public class KunaiController : MonoBehaviour
         }
         
     }
-
-
     public void CrearBala(float posicionX, float posicionY, bool vrf, GameObject bala)
     {
         bulletPosition = transform.position + new Vector3(posicionX, posicionY, 0);

@@ -9,9 +9,8 @@ public class ZombieController2 : MonoBehaviour
     Collider2D c;
     Animator animator;
 
-    public int velocity = -1, vidas = 1;
+    public int velocity = -1, vidasZombie = 2;
 
-    bool movement = true;
 
     const int ANIMATION_IDDLE = 0;
     const int ANIMATION_DIE = 1;
@@ -24,7 +23,7 @@ public class ZombieController2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         c = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>(); //Para saber a que objeto se refiere (buscar e igualar)
     }
 
     // Update is called once per frame
@@ -32,33 +31,34 @@ public class ZombieController2 : MonoBehaviour
     {
         rb.velocity = new Vector2(velocity, rb.velocity.y);
         ChangeAnimation(ANIMATION_IDDLE);
-
-        if (vidas <= 0)
-        {            
-            Destroy(this.gameObject);            
+        if (vidasZombie <= 0)
+        {
+            Destroy(this.gameObject);
+            gameManager.ZombieMuerto(1);
         }
-
-        if(gameManager.lives == 0)
+        if (gameManager.lives == 0)
         {
             Debug.Log("Choco el zombie");
             ChangeAnimation(ANIMATION_DIE);
             velocity = 0;           
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Kunai")
+        {
+            Debug.Log(vidasZombie);
+            Destroy(other.gameObject); //destruye kunai
+            quitarVidasZombie(1);
+        }
+    }
+
     public void quitarVidasZombie(int perder)
     {
-        vidas -= perder;
+        vidasZombie -= perder;
     }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        /*if (gameManager.choque == true && other.gameObject.tag == "Hero")
-        {
-            Debug.Log("Choco el zombie");
-            velocity = 0;
-            ChangeAnimation(ANIMATION_DIE);
-            Debug.Log(velocity);
-        }*/
-    }
+
     private void ChangeAnimation(int animation)
     {
         animator.SetInteger("EstadoZombie", animation);

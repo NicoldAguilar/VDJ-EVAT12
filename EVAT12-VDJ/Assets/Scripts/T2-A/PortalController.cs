@@ -6,15 +6,22 @@ public class PortalController : MonoBehaviour
 {
     public GameObject zombie;
     float cont = 0;
+
+    public GameManager2 gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager2>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.lives == 0)
+        {
+            return; //devuelve null
+        }
         cont += Time.deltaTime;
         if (cont >= 3) { CrearZombie(-1); cont = 0; }
     }
