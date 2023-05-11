@@ -9126,7 +9126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695098966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.92, y: 10.93, z: 0}
+  m_LocalPosition: {x: 6.95, y: 14.43, z: 0}
   m_LocalScale: {x: 2.3681, y: 2.3437, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9264,6 +9264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 7647130756953892758, guid: dfc935dcf5cf9de4ab2ca96405ce1e14, type: 3}
+  gameManager: {fileID: 0}
 --- !u!212 &1978216872
 SpriteRenderer:
   m_ObjectHideFlags: 0

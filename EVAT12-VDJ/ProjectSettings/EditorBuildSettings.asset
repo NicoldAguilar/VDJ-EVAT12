@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/T2-B.unity
     guid: b934692cfdf7710439df306cdfb9126e
+  - enabled: 1
+    path: Assets/Scenes/T2-D1.unity
+    guid: e0ff03a063887a2439db96c9b445d6d8
   m_configObjects: {}
