@@ -16,6 +16,7 @@ TagManager:
   - MasBalas
   - Llave
   - cambioEscena
+  - gameOver
   layers:
   - Default
   - TransparentFX

@@ -56,6 +56,7 @@ public class NinjaFemCotroller5 : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager3>();
+        gameManager.LoadGame();
     }
 
     // Update is called once per frame
@@ -175,7 +176,21 @@ public class NinjaFemCotroller5 : MonoBehaviour
             escena = true;
             if (escena == true && gameManager.coins == 10)
             {
+                gameManager.SaveGameT2();
                 SceneManager.LoadScene(GameManager3.SCENE_T2D2);
+            }
+            else
+            {
+                Debug.Log("Aún no cumples los requisitos");
+            }
+        }
+        if (other.gameObject.tag == "gameOver")
+        {
+            escena = true;
+            if (escena == true && gameManager.coins == 20)
+            {
+                gameManager.SaveGameT2();
+                SceneManager.LoadScene(GameManager3.SCENE_SCORE);
             }
             else
             {
@@ -198,8 +213,8 @@ public class NinjaFemCotroller5 : MonoBehaviour
     {
         if (escena == true && gameManager.coins == 10)
         {
-            SceneManager.LoadScene(GameManager3.SCENE_T2D2);
-            gameManager.LoadGame();
+            gameManager.SaveGameT2();
+            SceneManager.LoadScene(GameManager3.SCENE_T2D2);            
         }
         else
         {

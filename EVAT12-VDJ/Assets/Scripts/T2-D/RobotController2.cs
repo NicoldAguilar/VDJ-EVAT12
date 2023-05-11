@@ -45,6 +45,7 @@ public class RobotController2 : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager3>();
+        gameManager.LoadGame();
     }
 
     // Update is called once per frame
@@ -180,8 +181,21 @@ public class RobotController2 : MonoBehaviour
             escena = true;
             if (escena == true && gameManager.coins == 10)
             {
-                SceneManager.LoadScene(GameManager3.SCENE_T2D2);
-                gameManager.LoadGame();               
+                gameManager.SaveGameT2();
+                SceneManager.LoadScene(GameManager3.SCENE_T2D2);                               
+            }
+            else
+            {
+                Debug.Log("Aún no cumples los requisitos");
+            }
+        }
+        if (other.gameObject.tag == "gameOver")
+        {
+            escena = true;
+            if (escena == true && gameManager.coins == 20)
+            {
+                gameManager.SaveGameT2();
+                SceneManager.LoadScene(GameManager3.SCENE_SCORE);
             }
             else
             {
@@ -194,6 +208,7 @@ public class RobotController2 : MonoBehaviour
     {
         if (escena == true  && gameManager.coins == 10)
         {
+            gameManager.SaveGameT2();
             SceneManager.LoadScene(GameManager3.SCENE_T2D2);
         }
         else

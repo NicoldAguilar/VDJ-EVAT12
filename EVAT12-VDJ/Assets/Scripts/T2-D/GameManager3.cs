@@ -70,7 +70,7 @@ public class GameManager3 : MonoBehaviour
 
     public void SaveGameT2()
     {
-        var filePath = Application.persistentDataPath + "/saveT2D1.dat";
+        var filePath = Application.persistentDataPath + "/saveT2D.dat";
         FileStream file;
         if (File.Exists(filePath)) file = File.OpenWrite(filePath);
         else file = File.Create(filePath);
@@ -79,6 +79,7 @@ public class GameManager3 : MonoBehaviour
         data.Balas = balas;
         data.Vidas = lives;
         data.Zombies = zombiesCant;
+        data.Personaje = personaje;
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -129,6 +130,7 @@ public class GameManager3 : MonoBehaviour
         PrintZombieInScreen();
         balas = data.Balas;
         PrintInScreenBullet();
+        personaje = data.Personaje;
 
         UnityEngine.Debug.Log("Carga");
 
