@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 
 //Para el nivel
@@ -20,8 +21,13 @@ public class GameManager3 : MonoBehaviour
     public int coins;
     public int zombiesCant;
     public int personaje;
+    public int score;
 
     public bool choque = false;
+
+    public int puntosRobot;
+    public int puntosNinja;
+    public int accPuntos;
 
     public GameObject personaje1;
     public GameObject personaje2;
@@ -29,6 +35,7 @@ public class GameManager3 : MonoBehaviour
 
     public const int SCENE_T2D2 = 3;
     public const int SCENE_SCORE = 4;
+    public const int T2D3 = 5;
 
     void Start()
     {
@@ -37,6 +44,7 @@ public class GameManager3 : MonoBehaviour
         coins = 0;
         zombiesCant = 0;
         personaje = 0;
+        score = 0;
 
         LoadGame();
         LoadCharacterGame();
@@ -80,6 +88,7 @@ public class GameManager3 : MonoBehaviour
         data.Vidas = lives;
         data.Zombies = zombiesCant;
         data.Personaje = personaje;
+        data.Score = score;
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -153,6 +162,18 @@ public class GameManager3 : MonoBehaviour
         file.Close();
     }
 
+    public void RobotGanaPuntos(int accPuntos)
+    {
+        puntosRobot += accPuntos;
+        PrintZombieInScreen();
+    }
+
+    public void NinjaGanaPuntos(int accPuntos)
+    {
+        puntosNinja += accPuntos;
+        PrintZombieInScreen();
+    }
+
     public void BalasRestantes(int bullet)
     {
         balas -= bullet;
@@ -210,5 +231,10 @@ public class GameManager3 : MonoBehaviour
     private void PrintCoinsT1InScreen()
     {
         coinsText.text = "Monedas T1: " + coins;
+    }
+
+    public void regresarAlMenu()
+    {
+        SceneManager.LoadScene(T2D3);
     }
 }

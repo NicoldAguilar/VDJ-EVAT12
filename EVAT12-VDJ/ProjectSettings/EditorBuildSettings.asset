@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/T2-D3.unity
     guid: dd04110de1302284fb9420227a225566
+  - enabled: 1
+    path: Assets/Scenes/T2-D0.unity
+    guid: 1035418d201b95a479324cb525cc0c5a
   m_configObjects: {}

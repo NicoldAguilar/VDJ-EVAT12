@@ -15,7 +15,7 @@ public class ZombieController4 : MonoBehaviour
     const int ANIMATION_DIE = 1;
 
     public GameManager3 gameManager;
-
+    public GameSpriteManager spriteManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,9 @@ public class ZombieController4 : MonoBehaviour
         {
             Destroy(this.gameObject);
             gameManager.ZombieMuerto(1);
+            if(gameManager.personaje == 0) gameManager.RobotGanaPuntos(5);
+            else if(gameManager.personaje == 1) gameManager.NinjaGanaPuntos(5);
+            gameManager.SaveGameT2();
         }
         if (gameManager.lives == 0)
         {
